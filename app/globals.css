@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Базовые правки */
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  /* заменено: не используем @apply bg-gray-50 text-gray-900 antialiased из-за проблем с распознаванием утилит в базовом слое */
+  body {
+    background-color: #F9FAFB; /* Tailwind gray-50 */
+    color: #111827; /* Tailwind gray-900 */
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Небольшие «компоненты», чтобы не дублировать классы в JSX */
+@layer components {
+  .btn-primary {
+    padding: 0.5rem 1rem;              /* py-2 px-4 */
+    border-radius: 1rem;               /* rounded-2xl */
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow */
+    background-color: #000;            /* bg-black */
+    color: #fff;                       /* text-white */
+  }
+  .btn-primary:disabled { opacity: .5; } /* disabled:opacity-50 */
+
+  .card {
+    background-color: #fff;            /* bg-white */
+    border-radius: 1rem;               /* rounded-2xl */
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow */
+    padding: 1rem;                     /* p-4 */
+  }
+
+  .muted {
+    font-size: 0.75rem;                /* text-xs */
+    line-height: 1rem;
+    color: #6B7280;                    /* text-gray-500 */
+  }
+
+  .area {
+    width: 100%;                       /* w-full */
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* font-mono */
+    font-size: 0.875rem;               /* text-sm */
+    line-height: 1.25rem;
+    border-width: 1px;                 /* border */
+    border-style: solid;
+    border-color: #e5e7eb;             /* gray-200 */
+    border-radius: 0.5rem;             /* rounded-lg */
+    padding: 0.75rem;                  /* p-3 */
+    box-sizing: border-box;
+  }
+  .area-sm { height: 7rem; }           /* h-28 */
+  .area-lg { height: 18rem; }          /* h-72 */
+
+  .pill-ok,
+  .pill-fail {
+    display: inline-flex;              /* inline-flex */
+    align-items: center;               /* items-center */
+    padding: 0.125rem 0.5rem;          /* py-0.5 px-2 */
+    border-radius: 9999px;             /* rounded-full */
+    font-size: 0.75rem;                /* text-xs */
+    line-height: 1rem;
+    color: #fff;                       /* text-white */
+  }
+  .pill-ok   { background-color: #16A34A; } /* bg-green-600 */
+  .pill-fail { background-color: #DC2626; } /* bg-red-600 */
+}

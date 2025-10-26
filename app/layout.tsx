@@ -6,14 +6,12 @@ export const metadata: Metadata = {
   description: "Simple JavaScript code evaluator",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ru">
+      <body className="min-h-screen font-sans">
+        {children}
+      </body>
     </html>
   );
 }
