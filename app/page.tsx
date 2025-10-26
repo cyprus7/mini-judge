@@ -52,7 +52,9 @@ export default function Home() {
         },
       };
 
-      // Execute the user code in a safe context
+      // Execute the user code in the browser context
+      // Note: Using new Function() is intentional here as this is a code evaluator
+      // that runs entirely client-side. Users can only execute code in their own browser.
       const executeUserCode = new Function("process", code);
       executeUserCode(mockProcess);
 
